@@ -109,6 +109,8 @@ class DoWhyWrapper(CausalEstimator):
         est = self.estimator.predict(data)
 
         estimate = CausalEstimate(
+            treatment_name=self._treatment,
+            outcome_name=self._outcome,
             estimate=np.mean(est, axis=0),
             control_value=self._control_value,
             treatment_value=self._treatment_value,
